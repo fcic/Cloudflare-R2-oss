@@ -60,11 +60,11 @@ const emit = defineEmits(["update:modelValue", "click"]);
 }
 
 .menu-content li {
-  padding: 10px 14px;
+  padding: 8px 12px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.12s ease;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .menu-content li:hover {
