@@ -88,7 +88,8 @@ const emit = defineEmits(["update:modelValue", "upload", "createFolder"]);
   width: 100%;
   height: 100%;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
 }
 
 .popup-content {
@@ -96,15 +97,17 @@ const emit = defineEmits(["update:modelValue", "upload", "createFolder"]);
   bottom: 0;
   width: 100%;
   z-index: 2;
-  border-radius: 16px 16px 0 0;
-  background-color: white;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .popup .button-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 8px;
-  padding: 8px;
+  grid-gap: 12px;
+  padding: 20px 16px;
 }
 
 .popup button {
@@ -113,11 +116,20 @@ const emit = defineEmits(["update:modelValue", "upload", "createFolder"]);
   align-items: center;
   text-align: center;
   font-size: 12px;
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  padding: 12px 8px;
+  transition: all 0.15s ease;
+}
+
+.popup button:hover {
+  background-color: var(--bg-hover);
 }
 
 .popup svg {
   width: 32px;
   height: 32px;
   margin: 8px;
+  fill: var(--accent);
 }
 </style>

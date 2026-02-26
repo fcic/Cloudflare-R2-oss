@@ -1,4 +1,4 @@
-import { RequestHandlerParams, ROOT_OBJECT } from "./utils";
+import { isDirectory, RequestHandlerParams, ROOT_OBJECT } from "./utils";
 
 async function handleRequestPutMultipart({
     bucket,
@@ -38,12 +38,13 @@ export async function handleRequestPut({
         return new Response("Method Not Allowed", { status: 405 });
     }
 
-    // Check if the parent directory exists
+    // Check if the parent directory exists (support all folder conventions)
     if (!path.startsWith("_$flaredrive$/")) {
         const parentPath = path.replace(/(\/|^)[^/]*$/, "");
-        const parentDir =
-            parentPath === "" ? ROOT_OBJECT : await bucket.head(parentPath);
-        if (parentDir === null) return new Response("Conflict", { status: 409 });
+        if (parentPath !== "") {
+            const result = await isDirectory(bucket, parentPath);
+            if (!result.isDir) return new Response("Conflict", { status: 409 });
+        }
     }
 
     const thumbnail = request.headers.get("fd-thumbnail");

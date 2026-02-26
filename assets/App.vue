@@ -30,7 +30,7 @@
             width="24"
             height="24"
             title="Menu"
-            style="display: block; margin: 4px"
+            style="display: block; margin: 4px; fill: var(--text-light);"
           >
             <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
             <path
@@ -132,12 +132,12 @@
         </div>
       </li>
     </ul>
-    <div v-if="loading" style="margin-top: 12px; text-align: center">
+    <div v-if="loading" style="margin-top: 24px; text-align: center; color: var(--text-muted)">
       <span>加载中...</span>
     </div>
     <div
       v-else-if="!filteredFiles.length && !filteredFolders.length"
-      style="margin-top: 12px; text-align: center"
+      style="margin-top: 24px; text-align: center; color: var(--text-muted)"
     >
       <span>没有文件</span>
     </div>
@@ -647,23 +647,28 @@ export default {
 .app-bar {
   position: sticky;
   top: 0;
-  padding: 8px;
-  background-color: white;
+  padding: 10px 12px;
+  background-color: var(--bg-primary);
   display: flex;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
 }
 
 .menu-button {
   display: flex;
   position: relative;
-  margin-left: 4px;
+  margin-left: 6px;
 }
 
 .menu-button > button {
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  padding: 6px;
 }
 
 .menu-button > button:hover {
-  background-color: whitesmoke;
+  background-color: var(--bg-hover);
 }
 
 .menu {

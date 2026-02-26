@@ -1,4 +1,5 @@
 import {
+    isDirectory,
     listAll,
     RequestHandlerParams,
     ROOT_OBJECT,
@@ -45,7 +46,7 @@ async function findChildren({
 }) {
     if (!["1", "infinity"].includes(depth)) return [];
 
-    const objects: Array<R2Object> = [];
+    const objects: Array<any> = [];
 
     const prefix = path === "" ? path : `${path}/`;
     for await (const object of listAll(bucket, prefix, depth === "infinity")) {
@@ -65,14 +66,26 @@ export async function handleRequestPropfind({
 {{items}}
 </multistatus>`;
 
-    const rootObject = path === "" ? ROOT_OBJECT : await bucket.head(path);
-    if (!rootObject) return new Response("Not found", { status: 404 });
-    const isDirectory =
-        rootObject === ROOT_OBJECT ||
-        rootObject.httpMetadata?.contentType === "application/x-directory";
+    let rootObject: any;
+    let isDir = false;
+
+    if (path === "") {
+        rootObject = ROOT_OBJECT;
+        isDir = true;
+    } else {
+        // Check all possible directory types (WebDAV marker, _$folder$, prefix-based)
+        const result = await isDirectory(bucket, path);
+        if (result.obj) {
+            rootObject = result.obj;
+            isDir = result.isDir;
+        } else {
+            return new Response("Not found", { status: 404 });
+        }
+    }
+
     const depth = request.headers.get("Depth") ?? "infinity";
 
-    const children = !isDirectory
+    const children = !isDir
         ? []
         : await findChildren({
             bucket,

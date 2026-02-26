@@ -43,26 +43,31 @@ const emit = defineEmits(["update:modelValue", "click"]);
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
 
 .menu-content {
   position: absolute;
-  background-color: white;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
   z-index: 2;
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   right: -100%;
-  min-width: 128px;
+  min-width: 140px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
 .menu-content li {
-  padding: 10px;
+  padding: 10px 14px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.15s ease;
+  color: var(--text-primary);
+  font-size: 14px;
 }
 
 .menu-content li:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-hover);
 }
 </style>

@@ -18,5 +18,11 @@ export async function handleRequestGet({
     obj.writeHttpMetadata(headers);
     if (path.startsWith("_$flaredrive$/thumbnails/"))
         headers.set("Cache-Control", "max-age=31536000");
+
+    // For directory objects, return empty body
+    if (obj.httpMetadata?.contentType === "application/x-directory") {
+        return new Response("", { headers });
+    }
+
     return new Response(obj.body, { headers });
 }
