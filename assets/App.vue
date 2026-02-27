@@ -12,12 +12,12 @@
       @createFolder="createFolder"
       @createText="createText"
     ></UploadPopup>
-    <button class="create-text-button circle" @click="createText" title="新建文本">
+    <button v-show="!showUploadPopup" class="create-text-button circle" @click="createText" title="新建文本">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="22" height="22" style="fill: white">
         <path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V288H216c-13.3 0-24 10.7-24 24s10.7 24 24 24H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM432 288c-13.3 0-24 10.7-24 24v48H360c-13.3 0-24 10.7-24 24s10.7 24 24 24h48v48c0 13.3 10.7 24 24 24s24-10.7 24-24V408h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H456V312c0-13.3-10.7-24-24-24z"/>
       </svg>
     </button>
-    <button class="upload-button circle" @click="showUploadPopup = true">
+    <button v-show="!showUploadPopup" class="upload-button circle" @click="showUploadPopup = true">
       <img
         style="filter: invert(100%)"
         src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/png/file/upload_file/materialicons/36dp/2x/baseline_upload_file_black_36dp.png"

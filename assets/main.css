@@ -53,19 +53,15 @@ ul {
 }
 
 .file-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   padding: 1px 2px;
   gap: 0;
 }
 
-.file-list>li {
-  width: 33.33%;
-}
-
-@media only screen and (max-width: 768px) {
-  .file-list>li {
-    width: 100%;
+@media only screen and (max-width: 480px) {
+  .file-list {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -198,6 +194,8 @@ button.circle {
 .upload-button,
 .create-text-button {
   position: fixed;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -206,20 +204,7 @@ button.circle {
   box-shadow: 0 3px 12px var(--accent-glow), 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease;
   z-index: 50;
-}
-
-.upload-button {
-  width: 44px;
-  height: 44px;
   right: 14px;
-  bottom: 14px;
-}
-
-.create-text-button {
-  width: 38px;
-  height: 38px;
-  right: 17px;
-  bottom: 68px;
 }
 
 .upload-button:hover,
@@ -231,6 +216,14 @@ button.circle {
 .upload-button:active,
 .create-text-button:active {
   transform: scale(0.96);
+}
+
+.upload-button {
+  bottom: 14px;
+}
+
+.create-text-button {
+  bottom: 66px;
 }
 
 .contextmenu-filename {
