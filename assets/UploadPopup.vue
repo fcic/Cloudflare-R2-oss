@@ -110,8 +110,8 @@ const emit = defineEmits(["update:modelValue", "upload", "cameraUpload", "create
 .popup .button-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 6px;
-  padding: 14px 10px;
+  grid-gap: 4px;
+  padding: 10px 8px;
 }
 
 .popup button {
@@ -119,11 +119,11 @@ const emit = defineEmits(["update:modelValue", "upload", "cameraUpload", "create
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-primary);
-  border-radius: var(--radius-md);
-  padding: 8px 4px;
-  transition: all 0.15s ease;
+  border-radius: var(--radius-sm);
+  padding: 6px 2px;
+  transition: all 0.12s ease;
 }
 
 .popup button:hover {
@@ -131,9 +131,9 @@ const emit = defineEmits(["update:modelValue", "upload", "cameraUpload", "create
 }
 
 .popup svg {
-  width: 26px;
-  height: 26px;
-  margin: 4px;
+  width: 22px;
+  height: 22px;
+  margin: 3px;
   fill: var(--accent);
 }
 </style>

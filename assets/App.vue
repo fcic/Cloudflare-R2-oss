@@ -12,13 +12,18 @@
       @createFolder="createFolder"
       @createText="createText"
     ></UploadPopup>
+    <button class="create-text-button circle" @click="createText" title="新建文本">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="22" height="22" style="fill: white">
+        <path d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V288H216c-13.3 0-24 10.7-24 24s10.7 24 24 24H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM432 288c-13.3 0-24 10.7-24 24v48H360c-13.3 0-24 10.7-24 24s10.7 24 24 24h48v48c0 13.3 10.7 24 24 24s24-10.7 24-24V408h48c13.3 0 24-10.7 24-24s-10.7-24-24-24H456V312c0-13.3-10.7-24-24-24z"/>
+      </svg>
+    </button>
     <button class="upload-button circle" @click="showUploadPopup = true">
       <img
         style="filter: invert(100%)"
         src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/png/file/upload_file/materialicons/36dp/2x/baseline_upload_file_black_36dp.png"
         alt="Upload"
-        width="36"
-        height="36"
+        width="28"
+        height="28"
         @contextmenu.prevent
       />
     </button>
@@ -29,8 +34,8 @@
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             title="Menu"
             style="display: block; margin: 2px"
           >
@@ -57,8 +62,8 @@
           <div class="file-icon">
             <img
               src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/png/file/folder/materialicons/36dp/2x/baseline_folder_black_36dp.png"
-              width="28"
-              height="28"
+              width="22"
+              height="22"
               alt="Folder"
             />
           </div>
@@ -78,8 +83,8 @@
           <div class="file-icon">
             <img
               src="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/4.0.0/png/file/folder/materialicons/36dp/2x/baseline_folder_black_36dp.png"
-              width="28"
-              height="28"
+              width="22"
+              height="22"
               alt="Folder"
             />
           </div>
@@ -93,7 +98,7 @@
               focusedItem = folder;
             "
             >
-              <svg viewBox="0 0 24 24" style="height: 22px; width: 22px;"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"></path></svg>
+              <svg viewBox="0 0 24 24" style="height: 18px; width: 18px;"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"></path></svg>
           </div>
         </div>
       </li>
@@ -113,7 +118,7 @@
                   ? `/raw/_$flaredrive$/thumbnails/${file.customMetadata.thumbnail}.png`
                   : null
               "
-              :size="28"
+              :size="22"
             />
             <div>
               <div class="file-name" v-text="file.key.split('/').pop()"></div>
@@ -128,18 +133,18 @@
               focusedItem = file;
             "
             >
-              <svg viewBox="0 0 24 24" style="height: 22px; width: 22px;"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"></path></svg>
+              <svg viewBox="0 0 24 24" style="height: 18px; width: 18px;"><path fill="currentColor" d="M12,16A2,2 0 0,1 14,18A2,2 0 0,1 12,20A2,2 0 0,1 10,18A2,2 0 0,1 12,16M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10M12,4A2,2 0 0,1 14,6A2,2 0 0,1 12,8A2,2 0 0,1 10,6A2,2 0 0,1 12,4Z"></path></svg>
             </div>
           </div>
         </div>
       </li>
     </ul>
-    <div v-if="loading" style="margin-top: 16px; text-align: center; color: var(--text-muted); font-size: 12px">
+    <div v-if="loading" style="margin-top: 12px; text-align: center; color: var(--text-muted); font-size: 10px">
       <span>加载中...</span>
     </div>
     <div
       v-else-if="!filteredFiles.length && !filteredFolders.length"
-      style="margin-top: 16px; text-align: center; color: var(--text-muted); font-size: 12px"
+      style="margin-top: 12px; text-align: center; color: var(--text-muted); font-size: 10px"
     >
       <span>没有文件</span>
     </div>
@@ -374,7 +379,8 @@ export default {
     async saveTextFile() {
       try {
         const uploadUrl = `/api/write/items/${this.editingFileKey}`;
-        await axios.put(uploadUrl, this.editContent);
+        const blob = new Blob([this.editContent], { type: 'text/plain; charset=utf-8' });
+        await axios.put(uploadUrl, blob);
         this.showTextEditor = false;
         this.fetchFiles();
       } catch (error) {
@@ -384,6 +390,7 @@ export default {
           })
           .catch(() => {});
         console.error('Save failed', error);
+        alert('保存失败');
       }
     },
 
@@ -752,7 +759,7 @@ export default {
 .app-bar {
   position: sticky;
   top: 0;
-  padding: 6px 8px;
+  padding: 4px 6px;
   background-color: var(--bg-primary);
   display: flex;
   align-items: center;
@@ -763,13 +770,13 @@ export default {
 .menu-button {
   display: flex;
   position: relative;
-  margin-left: 4px;
+  margin-left: 3px;
 }
 
 .menu-button > button {
   transition: all 0.2s ease;
   border-radius: 50%;
-  padding: 4px;
+  padding: 3px;
 }
 
 .menu-button > button:hover {
@@ -783,11 +790,11 @@ export default {
 }
 
 .item-action {
-  margin-right: 6px;
+  margin-right: 4px;
   margin-left: auto;
-  padding: 2px;
+  padding: 1px;
   border-radius: 50%;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.12s ease;
   flex-shrink: 0;
 }
 
@@ -808,13 +815,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-bottom: 1px solid var(--border);
-  gap: 8px;
+  gap: 6px;
 }
 
 .text-editor-title {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
@@ -825,18 +832,18 @@ export default {
 
 .text-editor-actions {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   flex-shrink: 0;
 }
 
 .text-editor-btn {
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 11px;
   font-family: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.12s ease;
 }
 
 .text-editor-btn.save {
@@ -860,14 +867,14 @@ export default {
 .text-editor-content {
   flex: 1;
   width: 100%;
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: none;
   outline: none;
   resize: none;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   tab-size: 2;
   white-space: pre;
